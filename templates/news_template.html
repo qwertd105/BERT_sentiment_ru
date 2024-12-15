@@ -42,7 +42,9 @@
             <h2>Позитивные новости</h2>
             {% for news_item in news if news_item.class == 'positive' %}
                 <a href="{{ news_item.link }}" class="news-block positive">
-                    {{ news_item.title }}
+                    {{ news_item.title }} 
+                    <br>
+                    <span>(Логиты: Нейтральный: {{ news_item.logit[0] }}, Позитивный: {{ news_item.logit[1] }}, Негативный: {{ news_item.logit[2] }})</span>
                 </a>
             {% endfor %}
         </div>
@@ -50,7 +52,9 @@
             <h2>Нейтральные новости</h2>
             {% for news_item in news if news_item.class == 'neutral' %}
                 <a href="{{ news_item.link }}" class="news-block neutral">
-                    {{ news_item.title }}
+                    {{ news_item.title }} 
+                    <br>
+                    <span>(Логиты: Нейтральный: {{ news_item.logit[0] }}, Позитивный: {{ news_item.logit[1] }}, Негативный: {{ news_item.logit[2] }})</span>
                 </a>
             {% endfor %}
         </div>
@@ -59,6 +63,8 @@
             {% for news_item in news if news_item.class == 'negative' %}
                 <a href="{{ news_item.link }}" class="news-block negative">
                     {{ news_item.title }}
+                    <br> 
+                    <span>(Логиты: Нейтральный: {{ news_item.logit[0] }}, Позитивный: {{ news_item.logit[1] }}, Негативный: {{ news_item.logit[2] }})</span>
                 </a>
             {% endfor %}
         </div>
