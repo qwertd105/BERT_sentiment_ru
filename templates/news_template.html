@@ -1,0 +1,67 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex; /* Используем flexbox для колонок */
+            justify-content: space-between; /* Распределяем пространство между колонками */
+        }
+        .column {
+            width: 30%; /* Каждая колонка занимает 30% ширины */
+            padding: 10px;
+        }
+        .news-block {
+            padding: 10px;
+            margin: 10px 0;
+            color: white;
+            text-decoration: none;
+            display: block;
+            border-radius: 5px;
+        }
+        .neutral {
+            background-color: gray;
+        }
+        .positive {
+            background-color: green;
+        }
+        .negative {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Новости</h1>
+    <div class="container">
+        <div class="column">
+            <h2>Позитивные новости</h2>
+            {% for news_item in news if news_item.class == 'positive' %}
+                <a href="{{ news_item.link }}" class="news-block positive">
+                    {{ news_item.title }}
+                </a>
+            {% endfor %}
+        </div>
+        <div class="column">
+            <h2>Нейтральные новости</h2>
+            {% for news_item in news if news_item.class == 'neutral' %}
+                <a href="{{ news_item.link }}" class="news-block neutral">
+                    {{ news_item.title }}
+                </a>
+            {% endfor %}
+        </div>
+        <div class="column">
+            <h2>Негативные новости</h2>
+            {% for news_item in news if news_item.class == 'negative' %}
+                <a href="{{ news_item.link }}" class="news-block negative">
+                    {{ news_item.title }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
